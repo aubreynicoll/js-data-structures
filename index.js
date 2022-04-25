@@ -1,1 +1,3 @@
-module.exports = require("./public")
+'use strict';
+
+module.exports = require('./public');
