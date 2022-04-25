@@ -11,6 +11,7 @@
   "devDependencies": {
     "eslint": "^8.14.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.1.5",
     "jest": "^27.5.1"
   }

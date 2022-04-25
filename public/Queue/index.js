@@ -1,5 +1,8 @@
 'use strict';
 
+// Node Modules
+const util = require('util');
+
 /**
  * Private helper class for Queue
  */
@@ -63,7 +66,7 @@ class Queue {
   push(value) {
     if (!arguments.length) {
       return this.#size;
-    };
+    }
 
     const node = new Node(value);
 
@@ -87,7 +90,7 @@ class Queue {
   pop() {
     if (!this.#size) {
       return undefined;
-    };
+    }
 
     const value = this.#head.value;
 
@@ -108,6 +111,25 @@ class Queue {
     this.#head = null;
     this.#tail = null;
     this.#size = 0;
+  }
+
+  /**
+   * Implement console.log output in Node.js
+   * @return {string}
+   */
+  [util.inspect.custom]() {
+    const values = [];
+
+    let currentNode = this.#head;
+    while (currentNode) {
+      values.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+
+    return `Queue(${this.#size}) ${util.formatWithOptions(
+      { colors: true },
+      values,
+    )}`;
   }
 }
 
