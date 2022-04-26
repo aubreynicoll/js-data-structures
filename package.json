@@ -7,7 +7,14 @@
     "test": "jest"
   },
   "author": "Aubrey Nicoll <aubrey.nicoll@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aubreynicoll/js-data-structures"
+  },
+  "bugs": {
+    "url": "https://github.com/aubreynicoll/js-data-structures/issues"
+  },
   "devDependencies": {
     "eslint": "^8.14.0",
     "eslint-config-google": "^0.14.0",
