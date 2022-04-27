@@ -1,36 +1,23 @@
-'use strict';
-
 // Node Modules
-const util = require('util');
+import * as util from 'util';
 
-/**
- * Private helper class for Queue
- */
-class Node {
-  /**
-   * Returns a new Node
-   * @param {any} value The value stored in Node
-   */
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// Library
+import Node from './lib/SinglyLinkedListNode';
 
 /**
  * Public class Queue
  * Implemented using a singly-linked list, but with an added tail pointer
  */
-class Queue {
-  #head;
-  #tail;
-  #size;
+class Queue<T> {
+  #head: Node<T> | null;
+  #tail: Node<T> | null;
+  #size: number;
 
   /**
    * Return a new Queue
-   * @param {any[]} values Array of values to be pushed in Queue
+   * @param {T[]} values Array of values to be pushed in Queue
    */
-  constructor(values = []) {
+  constructor(values: T[] = []) {
     this.#head = null;
     this.#tail = null;
     this.#size = 0;
@@ -43,34 +30,23 @@ class Queue {
   /**
    * Access private field #size
    */
-  get size() {
+  get size(): number {
     return this.#size;
   }
 
   /**
-   * Throw Error if user attemps to modify Queue size
-   * Added this because otherwise it seemed to fail silently
-   * (i.e. assignment expression resolves to assigned value,
-   * but Queue size would remain unchanged).
-   * @param {any} x set size to x
-   */
-  set size(x) {
-    throw new Error('Queue.size is read-only');
-  }
-
-  /**
    * Push a value into the Queue
-   * @param {any} value Push value into the Queue
+   * @param {T} value Push value into the Queue
    * @return {number} The size of the Queue after the push operation
    */
-  push(value) {
+  push(value: T) {
     if (!arguments.length) {
       return this.#size;
     }
 
-    const node = new Node(value);
+    const node: Node<T> = new Node(value);
 
-    if (this.#size) {
+    if (this.#tail) {
       this.#tail.next = node;
       this.#tail = node;
     } else {
@@ -87,12 +63,12 @@ class Queue {
    * Pop a value from the Queue
    * @return {any} The first-inserted value
    */
-  pop() {
-    if (!this.#size) {
+  pop(): T | undefined {
+    if (!this.#head) {
       return undefined;
     }
 
-    const value = this.#head.value;
+    const value: T = this.#head.value;
 
     if (this.#size > 1) {
       this.#head = this.#head.next;
@@ -107,7 +83,7 @@ class Queue {
   /**
    * Empty the Queue
    */
-  clear() {
+  clear(): void {
     this.#head = null;
     this.#tail = null;
     this.#size = 0;
@@ -117,10 +93,10 @@ class Queue {
    * Implement console.log output in Node.js
    * @return {string}
    */
-  [util.inspect.custom]() {
-    const values = [];
+  [util.inspect.custom](): string {
+    const values: T[] = [];
 
-    let currentNode = this.#head;
+    let currentNode: Node<T> | null = this.#head;
     while (currentNode) {
       values.push(currentNode.value);
       currentNode = currentNode.next;
@@ -133,4 +109,4 @@ class Queue {
   }
 }
 
-module.exports = Queue;
+export default Queue;

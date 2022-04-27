@@ -1,14 +1,18 @@
-'use strict';
-
 module.exports = {
-  plugins: ['jest'],
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
   env: {
-    'commonjs': true,
-    'es2021': true,
-    'node': true,
-    'jest/globals': true,
+    commonjs: true,
+    es2021: true,
+    node: true,
   },
-  extends: ['google', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'google',
+    'prettier',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
   },

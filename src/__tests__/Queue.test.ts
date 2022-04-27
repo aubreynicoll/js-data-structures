@@ -1,7 +1,5 @@
-'use strict';
-
 // Classes
-const Queue = require('.');
+import Queue from '../Queue';
 
 describe('Public Class: Queue', () => {
   test('Constructor with no args', () => {
@@ -14,12 +12,6 @@ describe('Public Class: Queue', () => {
     const queue = new Queue(['a', 'b', 'c']);
     expect(queue instanceof Queue).toBe(true);
     expect(queue.size).toBe(3);
-  });
-
-  test('Empty push does not modify Queue', () => {
-    const queue = new Queue();
-    expect(queue.push()).toBe(0);
-    expect(queue.size).toBe(0);
   });
 
   test('Pushing values to Queue', () => {
@@ -76,13 +68,5 @@ describe('Public Class: Queue', () => {
 
     expect(queue.size).toBe(0);
     expect(queue.pop()).toBeUndefined();
-  });
-
-  test('Assignment to "size" property throws error', () => {
-    const queue = new Queue();
-    expect(() => {
-      queue.size = 10;
-    }).toThrow('Queue.size is read-only');
-    expect(queue.size).toBe(0);
   });
 });
