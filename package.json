@@ -1,19 +1,22 @@
 {
   "name": "@aubreynicoll/data-structures",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Data Structures in JS",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "files": ["build", "src"],
+  "files": [
+    "build",
+    "src"
+  ],
   "scripts": {
     "lint": "eslint .",
     "format": "npm run lint -- --fix && prettier --write \"src/**/*.ts\"",
     "test": "npm run lint && jest --config jestconfig.json",
     "build": "tsc",
     "prepare": "npm run build",
-    "prepublishOnly" : "npm test",
+    "prepublishOnly": "npm test",
     "version": "git add -A",
-    "postversion" : "git push && git push --tags"
+    "postversion": "git push && git push --tags"
   },
   "author": "Aubrey Nicoll <aubrey.nicoll@gmail.com>",
   "license": "MIT",
